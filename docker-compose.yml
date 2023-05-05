@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+  sgamc:
+    build: .
+    image: stromgedacht2mqtt:dev
+    container_name: stromgedacht2mqtt
+    restart: unless-stopped
+    #user: "0"
+  #  environment:  ##aktuell im skript direkt konfiguriert
+    # For MQTT Broker:
+  #  - MQTT_TOPIC=mfm
+  #  - MQTT_HOST=192.168.177.100
+  #  - MQTT_PORT=1883
+  #  - MQTT_CLIENT_ID=""
+  #  - MQTT_KEEPALIVE=60
+  #  - MQTT_WILL=None
+  #  - MQTT_AUTH=None
