@@ -25,16 +25,16 @@ and adjust all the required configuration settings to your *config.ini*-file
 ### create docker container
 
 building the container
-`docker build -t StromGedachtApiMqttConnector:latest .`
+`docker build -t stromgedacht2mqtt:latest .`
 
-`docker run StromGedachtApiMqttConnector:latest StromGedachtApiMqttConnector:latest`
+`docker run stromgedacht2mqtt:latest stromgedacht2mqtt:latest`
 
 building the container with docker-compose
 `docker-compose up`
 
-* Run `python3 StromGedachtApiMqttConnector.py`
+* Run `python3 sgamc.py`
 
-There's also a Docker Image available on [Docker Hub](https://hub.docker.com/repository/docker/wolfi82/kostal2mqtt).
+There's also a Docker Image available on [Docker Hub](https://hub.docker.com/repository/docker/wolfi82/stromgedacht2mqtt).
 Note: The Docker-Container runs pretty stable on a amd64 acrchitecture. For arm architectures such as Raspberry Pi, the container is not yet running.
 in the *Dockerfile* you might ùncomment `FROM arm32v7/python:3.8-slim-buster` and give it a try.
 
