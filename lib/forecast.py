@@ -49,7 +49,10 @@ def convert_dataset2influx(response,config):
     outDB=[]
     try:
         content = json.loads(response.text)
+        status_code = response.status_code
         states = content["states"]
+        # not sure, how the response is structured in case there is a restriction in future.
+        #assumption: the states are listed with several timestamps.
         state_id_list= np.linspace(0, 1, len(states), endpoint=False, dtype=int)
         for state_id in state_id_list:
             starttime = timestamp_convert(states[state_id]["from"])
@@ -70,6 +73,15 @@ def convert_dataset2influx(response,config):
             outDB.append(outDB_new)            
     except Exception as e:
         logging.error(str(e))
+        status_code = 999
+    
+                
+    outDB_new = {'measurement': config.get('influxdb', 'measurement_name'),
+                             'tags': {'location': config.get('StromGedacht', 'location'),
+                                      'zip_code': config.get('StromGedacht', 'zip_code')},
+                             'fields': {'status_code': status_code},
+                             'time':starttime}
+    outDB.append(outDB_new)
     return(outDB)
 
 
