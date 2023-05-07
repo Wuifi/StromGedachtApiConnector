@@ -54,11 +54,8 @@ def check_db_status(db_handler, db_name):
 
 
 def write2influx(data,influxdb_client,config):
-
-    duration=0
-    start = int(datetime.utcnow().timestamp() * 1000)  
     try:
-        logging.info("Writing data to InfluxDB")
+        #logging.info("Writing data to InfluxDB")
 
         logging.debug("InfluxDB - measurement: %s" % data) #.get("measurement")
 
@@ -72,6 +69,4 @@ def write2influx(data,influxdb_client,config):
         logging.error("Failed to write to InfluxDB <%s>: %s" % (config.get('influxdb', 'hostname'), str(e)))
         logging.error("out_influxDB <%s>: ",  data)
 
-    duration = int(datetime.utcnow().timestamp() * 1000) - start
-    logging.debug("Duration sending data to InfluxDB: %0.3fs" % (duration / 1000)) 
-    return duration
+    return ()

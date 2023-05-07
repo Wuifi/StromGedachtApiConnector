@@ -26,7 +26,7 @@ def getDataStatesForecast(stromgedachtURL,zip_code):
 
         # the API only provides data for up to four days in the past and two days in the future
         requestURL = stromgedachtURL+"states?zip="+str(zip_code)+"&from="+starttime+"&to="+endtime
-        print(requestURL)
+        #print(requestURL)
         # stromgedachtURL = "https://api.stromgedacht.de/v1/states?zip=70173&from=2023-04-11T00%3A00%3A00%2B02%3A00&to=2023-04-17T23%3A59%3A59%2B02%3A00"
 
         response = requests.get(requestURL, headers = {"accept":"application/json"})
@@ -73,6 +73,7 @@ def convert_dataset2influx(response,config):
             outDB.append(outDB_new)            
     except Exception as e:
         logging.error(str(e))
+        logging.error(str(states))
         status_code = 999
     
                 
