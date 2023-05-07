@@ -14,6 +14,7 @@ import numpy as np
 
 
 def getDataStatesForecast(stromgedachtURL,zip_code):
+    response = None
     try:
         # only look forward with the forecast. 
         ## get the time range for states request:

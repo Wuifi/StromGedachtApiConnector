@@ -13,6 +13,7 @@ default_log_level = logging.INFO
 ########################################
 ## get data
 def getDataNow(stromgedachtURL,zip_code):
+    response = None
     try:
         requestURL = stromgedachtURL+"now?zip="+str(zip_code)
         response = requests.get(requestURL, headers = {"accept":"application/json"})
@@ -22,6 +23,7 @@ def getDataNow(stromgedachtURL,zip_code):
     return response
 
 def getDataStates(stromgedachtURL,zip_code):
+    response = None
     try:
         ## get the time range for states request:
         #time format required for API:
